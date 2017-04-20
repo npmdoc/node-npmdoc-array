@@ -1,0 +1,168 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a>array (v0.4.3)</a>
+</h1>
+<h4>a vocal, functional array</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.array">module array</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.array.array">
+            function <span class="apidocSignatureSpan"></span>array
+            <span class="apidocSignatureSpan">(arr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.array.get">
+            function <span class="apidocSignatureSpan">array.</span>get
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.array" id="apidoc.module.array">module array</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.array.array" id="apidoc.element.array.array">
+        function <span class="apidocSignatureSpan"></span>array
+        <span class="apidocSignatureSpan">(arr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function array(arr) {
+  if(!(this instanceof array)) return new array(arr);
+  arr = arr || [];
+
+  if (isArray(arr)) {
+    // create array-like object
+    var len = this.length = arr.length;
+    for(var i = 0; i &lt; len; i++) this[i] = arr[i];
+  } else if ('object' == typeof arr) {
+    if (isObjectLiteral(arr)) {
+      arr._ctx = this._ctx = JSON.parse(JSON.stringify(arr));
+    }
+
+    // mixin to another object
+    for(var key in array.prototype) arr[key] = array.prototype[key];
+    return arr;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    component install matthewmueller/array
+
+### Browser (standalone, amd, etc.)
+
+* Development (24k): [dist/array.js](https://raw.github.com/MatthewMueller/array/master/dist/array.js)
+* Production (4k w/ gzip): [dist/array.js](https://raw.github.com/MatthewMueller/array/master/dist/array.min.js)
+
+&gt; Note: if you use this library standalone, `array` will be attached to the window. You can access it with `window.<span class="apidocCodeKeywordSpan">array</span>()` or just `array()`. Keep in mind javascript is case-sensitive and `Array()` will create
+a native array.
+
+## Examples
+
+### Iteration:
+
+```js
+users
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.array.get" id="apidoc.element.array.get">
+        function <span class="apidocSignatureSpan">array.</span>get
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (obj) {
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+enumerable.map = function(fn){
+ fn = toFunction(fn);
+ var out = [],
+     arr = this,
+     len = arr.length;
+
+ for (var i = 0; i &lt; len; ++i) {
+   out.push(fn(arr.<span class="apidocCodeKeywordSpan">get</span>(arr[i]), i));
+ }
+
+ return this._remake(out);
+};
+
+/**
+* Select all values that return a truthy value of `fn(val, i)`.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
